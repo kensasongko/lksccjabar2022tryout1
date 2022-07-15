@@ -1,0 +1,69 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{LKS Cloud Computing Provinsi Jawa Barat 2022 - Tryout 1}
+\author{}
+
+\begin{document}
+\maketitle
+
+\section*{Task 1}
+\begin{enumerate}
+\item Create a Hosted Zone in Route53 and update your domain's NS records to use Route 53 name servers.\\
+Reference: \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html}{Route 53 Documentation}
+\item Ensure your domain has been configured correctly in Route 54 (e.g., Create an A record and check the result with ping/dig/nslookup).
+\end{enumerate}
+
+\section*{Task 2}
+Follow the following tutorial to create CRUD API with Lambda and DynamoDB:
+\href{https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-dynamo-db.html}{CRUD Tutorial}
+
+\section*{Task 3}
+\begin{enumerate}
+\item Create a bucket and enable static website hosting. The bucket name must contain: "LKSCC2022-[Your LKS ID]"\\
+Reference: \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html}{S3 Documentation}
+\item Create a file named index.html, the body must contain your LKS ID.\\
+Reference: \href{https://www.w3schools.com/html/html_basic.asp}{HTML Basic Example} 
+\item Upload index.html to the bucket.
+\item Ensure that you can open the file via the static website hosting URL.
+\item Create CloudFront distribution with static website hosting URL as the origin.\\
+Reference: \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html}{CloudFront documentation}
+\item Ensure your CloudFront distribution content matches the S3 bucket content.
+\end{enumerate}
+
+\section*{Task 4}
+\begin{enumerate}
+\item Create a VPC with 2 availability zones (AZs), each AZ must have a public subnet and a private subnet (NAT).\\
+Reference: \href{https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html}{VPC documentation}
+\item Create Elastic Load Balancer with the following specification:
+\begin{itemize}
+\item Type: Application Load Balancer
+\item Security Group: Allow HTTP and HTTPS from anywhere
+\end{itemize}
+Reference: \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html}{Elastic Load Balancer documentation}
+\item Create an EC2 instance,install nginx.\\
+Reference: \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html}{EC2 Documentation}
+\item Create an AMI for Autoscaling Group using the EC2 instance you have created previously.\\
+Reference: \href{https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/tkv-create-ami-from-instance.html}{Create an AMI from EC2 Instance}
+\item Create an Austoscaling Group with the following specifications:
+\begin{itemize}
+\item Subnet: Private
+\item Instance Type: t2.micro
+\item Desired Capacity: 2
+\item Minimum Capacity: 2
+\item Maximum Capacity: 2
+\end{itemize}
+\item Forward Application Load Balancer's incoming traffic to Autoscaling Group
+\item Ensure you can see the default NGINX's page from the internet by opening Application Load Balancer's URL.
+\item (Optional) Ensure you can create RDS MySQL instance.\\
+Reference: \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.html}{RDS Documentation}
+\item (Optional) Ensure you can create ElastiCache Redis cluster.\\
+Reference: \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.html}{ElastiCache Documentation}
+\end{enumerate}
+
+\end{document}
